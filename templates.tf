@@ -1,6 +1,6 @@
-provider "template" {
-  version = "2.2.0"
-}
+# provider "template" {
+#   version = "2.2.0"
+# }
 
 data "template_file" "vault_primary" {
   template = "${file("${path.module}/templates/userdata-vault.tpl")}"

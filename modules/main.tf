@@ -2,6 +2,15 @@
 #  PROVIDER(S)
 # ---------------------------------------------------------------------------------------------------------------------
 
+terraform {
+  required_providers {
+    template = {
+      source = "hashicorp/template"
+      version = "2.2.0"
+    }
+  }
+}
+
 provider "aws" {
   region = "${var.region}"
 }
@@ -19,8 +28,8 @@ resource "aws_instance" "vault" {
   vpc_security_group_ids      = ["${aws_security_group.main.id}"]
   associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.vault.id}"
-
-  tags {
+ 
+  tags  = {
     Name     = "${var.name}-vault-server-${count.index}"
     ConsulDC = "${var.name}-replication-testing"
   }
@@ -47,7 +56,7 @@ resource "aws_instance" "consul" {
   associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.vault.id}"
 
-  tags {
+  tags =  {
     Name     = "${var.name}-consul-server-${count.index}"
     ConsulDC = "${var.name}-replication-testing"
   }
@@ -73,7 +82,7 @@ resource "aws_kms_key" "vault" {
   description             = "Vault unseal key"
   deletion_window_in_days = 7
 
-  tags {
+  tags = {
     Name = "${var.name}-vault-replication-kms-unseal-key"
   }
 }
@@ -88,7 +97,7 @@ resource "aws_security_group" "main" {
   description = "SSH and Internal Traffic"
   vpc_id      = "${var.vpc_id}"
 
-  tags {
+  tags = {
     Name = "${var.name}"
   }
 
