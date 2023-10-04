@@ -18,7 +18,7 @@ module "vpc" {
 
   enable_dns_hostnames = true
 
-  assign_generated_ipv6_cidr_block = true
+  enable_ipv6 = true
 
   enable_nat_gateway = true
   single_nat_gateway = true
