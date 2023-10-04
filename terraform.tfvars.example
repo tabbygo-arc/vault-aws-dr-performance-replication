@@ -1,4 +1,4 @@
-vault_zip = "NAME_OF_VAULT_FILE.zip"
-vault_url = "path/to/vault_enterprize_binary.zip"
-consul_zip = "NAME_OF_CONSUL_FILE.zip"
-consul_url = "path/to/consul_enterprize_binary.zip"
+vault_zip = "vault_1.15.0+ent.zip"
+vault_url = "https://releases.hashicorp.com/vault/vault_1.15.0+ent.zip"
+consul_zip = "consul_1.16.2+ent.zip"
+consul_url = "https://releases.hashicorp.com/consul/consul_1.16.2+ent.zip"

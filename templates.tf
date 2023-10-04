@@ -1,5 +1,5 @@
 provider "template" {
-  version = "~> 1.0"
+  version = "2.2.0"
 }
 
 data "template_file" "vault_primary" {
